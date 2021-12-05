@@ -1,3 +1,8 @@
+def i_range(start, end):
+    if end < start:
+        return range(start, end-1, -1)
+    return range(start, end+1)
+
 lines = []  # [x1, y1, x2, y2]
 max_coord = 0
 
@@ -15,15 +20,11 @@ diagram = [[0 for _ in range(max_coord)] for _ in range(max_coord)]
 
 for line in lines:
     x1, y1, x2, y2 = line
-    if x1 > x2:
-        x1, x2 = x2, x1
-    if y1 > y2:
-        y1, y2 = y2, y1
     if x1 == x2:
-        for y_coord in range(y1, y2+1):
+        for y_coord in i_range(y1, y2):
             diagram[x1][y_coord] += 1
     elif y1 == y2:
-        for x_coord in range(x1, x2+1):
+        for x_coord in i_range(x1, x2):
             diagram[x_coord][y1] += 1
 
 count = 0
