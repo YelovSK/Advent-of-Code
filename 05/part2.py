@@ -1,3 +1,8 @@
+def i_range(start, end):
+    if end < start:
+        return range(start, end-1, -1)
+    return range(start, end+1)
+
 lines = []  # [x1, y1, x2, y2]
 max_coord = 0
 
@@ -14,26 +19,18 @@ with open("05\\input.txt") as f:
 diagram = [[0 for _ in range(max_coord)] for _ in range(max_coord)]
 
 for line in lines:
-    # I feel sicc from this spaghett
-    # I lost all of my 2 remaining brain cells trying to do diagonal because I guess Python doesn't have inclusive range
     y1, x1, y2, x2 = line
     if x1 == x2:
-        if y1 > y2:
-            y1, y2 = y2, y1
-        for y_coord in range(y1, y2+1):
+        for y_coord in i_range(y1, y2):
             diagram[x1][y_coord] += 1
     elif y1 == y2:
-        if x1 > x2:
-            x1, x2 = x2, x1
-        for x_coord in range(x1, x2+1):
+        for x_coord in i_range(x1, x2):
             diagram[x_coord][y1] += 1
     elif abs(x2-x1) == abs(y2-y1):
-        x_incl = -1 if x2 < x1 else 1
-        y_incl = -1 if y2 < y1 else 1
-        for _ in range(abs(x2 - x1) + 1):
-            diagram[x1][y1] += 1
-            x1 += x_incl
-            y1 += y_incl
+        x_range = i_range(x1, x2)
+        y_range = i_range(y1, y2)
+        for i in range(len(x_range)-1):
+            diagram[x_range[i]][y_range[i]] += 1
 
 count = 0
 for row in diagram:
