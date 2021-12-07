@@ -1,7 +1,7 @@
 # [Advent of Code 2021](https://adventofcode.com/2021)
 
-![](https://img.shields.io/badge/day%20📅-6-blue)
-![](https://img.shields.io/badge/stars%20⭐-12-yellow)
+![](https://img.shields.io/badge/day%20📅-7-blue)
+![](https://img.shields.io/badge/stars%20⭐-14-yellow)
 ### PROGRESS
 
 | Day | Name | Solution | Stars Earned |
@@ -12,7 +12,7 @@
 | 04 | [Giant Squid](https://adventofcode.com/2021/day/4) | [04](04) | ★★ |
 | 05 | [Hydrothermal Venture](https://adventofcode.com/2021/day/5) | [05](05) | ★★ |
 | 06 | [Lanternfish](https://adventofcode.com/2021/day/6) | [06](06) | ★★ |
-| 07 |  |  | ☆☆ |
+| 07 | [The Treachery of Whales](https://adventofcode.com/2021/day/7) | [07](07) | ★★ |
 | 08 |  |  | ☆☆ |
 | 09 |  |  | ☆☆ |
 | 10 |  |  | ☆☆ |
