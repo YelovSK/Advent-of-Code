@@ -19,19 +19,13 @@ nums = {
     "9": [0, 1, 2, 3, 5, 6]
 }
 
-def get_nums(segments, nums):
-    return {
-        "".join(sorted([segments[ix] for ix in index_list])): key for key, index_list in nums.items()
-    }
-
 res = 0
 for input_line, output_line in zip(inputs, outputs):
     input_line = {"".join(sorted(x)) for x in input_line}
     output_line = ["".join(sorted(x)) for x in output_line]
     for perm in permutations("abcdefg"):
-        curr_nums = get_nums(perm, nums)
+        curr_nums = {"".join(sorted([perm[ix] for ix in index_list])): key for key, index_list in nums.items()}
         if input_line == curr_nums.keys():
-            chars = "".join([curr_nums[x] for x in output_line])
-            res += int(chars)
+            res += int("".join([curr_nums[x] for x in output_line]))
 
 print(res)
