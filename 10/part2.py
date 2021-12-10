@@ -6,14 +6,14 @@ pairs = {
     "{": "}",
     "(": ")",
     "<": ">"
-    }
+}
 
 bracket_vals = {
     ")": 1,
     "]": 2,
     "}": 3,
     ">": 4
-    }
+}
 
 def validate_line(line):
     opening = []
@@ -21,10 +21,8 @@ def validate_line(line):
         if char in pairs.keys():
             opening.append(char)
         elif char in bracket_vals.keys():
-            if pairs[opening[-1]] != char:
+            if pairs[opening.pop()] != char:
                 return char
-            else:
-                opening.pop()
 
 def score_incomplete(line):
     score = 0
