@@ -13,7 +13,7 @@ for line in lines[1:]:
     else:
         boards[current_board].append(line.split())
 
-def check_board_completion(board: list[list[str]]):
+def check_board_completion(board):
     for row in board:
         if len([1 for num in row if num[-1] == "m"]) == len(row):
             return True
