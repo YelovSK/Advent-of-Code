@@ -6,7 +6,10 @@ times = [time.perf_counter()]
 for folder in folders:
     runpy.run_path(f"{folder}\\part1.py")
     times.append(time.perf_counter())    
-    runpy.run_path(f"{folder}\\part2.py")
+    if folder != "07":
+        runpy.run_path(f"{folder}\\part2.py")
+    else:
+        runpy.run_path(f"{folder}\\part2_fast.py")
     times.append(time.perf_counter())
     
 for i, folder in enumerate(folders):
