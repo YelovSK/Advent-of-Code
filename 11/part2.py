@@ -16,16 +16,11 @@ def flash(i, j):
 step = 1
 while True:
     flashed = set()
-    to_flash = set()
-    # inc by 1
     for i in range(len(octopuses)):
         for j in range(len(octopuses[i])):
             octopuses[i][j] += 1
             if octopuses[i][j] > 9:
-                to_flash.add((i, j))
-    # flash
-    for i, j in to_flash:
-        flash(i, j)
+                flash(i, j)
     # get flashed to 0
     for i, j in flashed:
         octopuses[i][j] = 0
