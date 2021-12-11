@@ -10,5 +10,4 @@ with open("02\input.txt") as f:
             depth += val
         elif dir == "up":
             depth -= val
-    print(horizontal, depth)
     print(horizontal * depth)
