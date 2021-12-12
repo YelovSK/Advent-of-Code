@@ -1,7 +1,7 @@
 # [Advent of Code 2021](https://adventofcode.com/2021)
 
-![](https://img.shields.io/badge/day%20📅-11-blue)
-![](https://img.shields.io/badge/stars%20⭐-22-yellow)
+![](https://img.shields.io/badge/day%20📅-12-blue)
+![](https://img.shields.io/badge/stars%20⭐-24-yellow)
 ### PROGRESS
 
 | Day | Name | Solution | Stars Earned |
@@ -17,7 +17,7 @@
 | 09 | [Smoke Basin](https://adventofcode.com/2021/day/9) | [09](09) | ★★ |
 | 10 | [Syntax Scoring](https://adventofcode.com/2021/day/10) | [10](10) | ★★ |
 | 11 | [Dumbo Octopus](https://adventofcode.com/2021/day/11) | [11](11) | ★★ |
-| 12 |  |  | ☆☆ |
+| 12 | [Passage Pathing](https://adventofcode.com/2021/day/12) | [12](12) | ★★ |
 | 13 |  |  | ☆☆ |
 | 14 |  |  | ☆☆ |
 | 15 |  |  | ☆☆ |
