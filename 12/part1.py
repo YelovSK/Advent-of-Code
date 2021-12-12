@@ -7,31 +7,22 @@ with open("12\\input.txt") as f:
         graph[start].append(end)
         graph[end].append(start)
 
-def find_paths(curr, end, visited, curr_path):
-    global paths
+def find_paths(curr, end, visited):
+    global res
     if curr == end:
-        paths.append(curr_path)
+        res += 1
         return
 
     if curr.islower():
         visited.add(curr)
-    curr_path.append(curr)
 
     for cave in graph[curr]:
         if cave not in visited or cave.isupper():
-            find_paths(cave, end, visited, curr_path)
+            find_paths(cave, end, visited)
                     
-    curr_path.pop()
     if curr.islower():
         visited.remove(curr)
 
-paths = []
-find_paths("start", "end", set(), list())
-
 res = 0
-for path in paths:
-    lower = [cave for cave in path if cave.islower()]
-    if len(lower) == len(set(lower)):
-        res += 1
-
+find_paths("start", "end", set())
 print(res)
