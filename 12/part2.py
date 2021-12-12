@@ -10,7 +10,7 @@ with open("12\\input.txt") as f:
 def find_paths(curr, end, path, visited):
     global paths
     if curr == end:
-        paths.append(list(path))
+        paths.append(path)
         return
 
     if curr.islower():
