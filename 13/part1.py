@@ -30,7 +30,9 @@ def fold_list(coord, num):
     for i in range(len(smoler)):
         for j in range(len(smoler[i])):
             if smoler[i][j] == "#":
-                new_dots[i][j] = "#"
+                x_offset = len(larger)-len(smoler)
+                y_offset = len(larger[0])-len(smoler[0])
+                new_dots[i+x_offset][j+y_offset] = "#"
     return new_dots
 
 for fold in folding:
