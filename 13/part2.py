@@ -12,7 +12,9 @@ for c in coords.split("\n"):
     y = int(c.split(",")[1])
     x_coords.append(x)
     y_coords.append(y)
-dots = [["." for _ in range(max(x_coords)+1)] for _ in range(max(y_coords)+1)]
+x_size = int(folding[0].split("=")[1]) * 2
+y_size = int(folding[1].split("=")[1]) * 2
+dots = [["." for _ in range(x_size+1)] for _ in range(y_size+1)]
 for x, y in zip(x_coords, y_coords):
     dots[y][x] = "#"    # flipped, cuz idk
 
@@ -30,9 +32,7 @@ def fold_list(coord, num):
     for i in range(len(smoler)):
         for j in range(len(smoler[i])):
             if smoler[i][j] == "#":
-                x_offset = len(larger)-len(smoler)
-                y_offset = len(larger[0])-len(smoler[0])
-                new_dots[i+x_offset][j+y_offset] = "#"
+                new_dots[i][j] = "#"
     return new_dots
 
 for fold in folding:
