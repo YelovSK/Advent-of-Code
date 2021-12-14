@@ -13,16 +13,12 @@ for i in range(len(start)-1):
 	if start[i] + start[i+1] in pairs:
 		pair_count[start[i]+start[i+1]] += 1
 
-steps = 40
-for _ in range(steps):
+for _ in range(40):
 	for pair, count in pair_count.copy().items():
-		new_char = pairs[pair]
-		occurence_map[new_char] += count
-		pair_count[pair] -= count	# XX -> XAX, XX pair is gone
-		n1, n2 = pair[0] + new_char, new_char + pair[1]	# XYX: XY, YX
-		if n1 in pairs:
-			pair_count[n1] += count
-		if n2 in pairs:
-			pair_count[n2] += count
+		new_char = pairs[pair]	# AC -> B
+		occurence_map[new_char] += count	# add B
+		pair_count[pair] -= count	# AC -> ABC, AC pair is gone
+		pair_count[pair[0] + new_char] += count	# AB from ABC
+		pair_count[new_char + pair[1]] += count	# BC from ABC
 
 print(max(occurence_map.values()) - min(occurence_map.values()))
