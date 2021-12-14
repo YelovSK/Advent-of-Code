@@ -1,7 +1,7 @@
 # [Advent of Code 2021](https://adventofcode.com/2021)
 
-![](https://img.shields.io/badge/day%20📅-13-blue)
-![](https://img.shields.io/badge/stars%20⭐-26-yellow)
+![](https://img.shields.io/badge/day%20📅-14-blue)
+![](https://img.shields.io/badge/stars%20⭐-28-yellow)
 ### PROGRESS
 
 | Day | Name | Solution | Stars Earned |
@@ -19,7 +19,7 @@
 | 11 | [Dumbo Octopus](https://adventofcode.com/2021/day/11) | [11](11) | ★★ |
 | 12 | [Passage Pathing](https://adventofcode.com/2021/day/12) | [12](12) | ★★ |
 | 13 | [Transparent Origami](https://adventofcode.com/2021/day/13) | [13](13) | ★★ |
-| 14 |  |  | ☆☆ |
+| 14 | [Extended Polymerization](https://adventofcode.com/2021/day/14) | [14](14) | ★★ |
 | 15 |  |  | ☆☆ |
 | 16 |  |  | ☆☆ |
 | 17 |  |  | ☆☆ |
