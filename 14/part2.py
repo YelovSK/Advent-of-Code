@@ -1,5 +1,4 @@
 from collections import defaultdict
-from copy import copy
 
 with open("14\\input.txt") as f:
     lines = [line.strip() for line in f.readlines()]
