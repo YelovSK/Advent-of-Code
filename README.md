@@ -1,7 +1,7 @@
 # [Advent of Code 2021](https://adventofcode.com/2021)
 
-![](https://img.shields.io/badge/day%20📅-15-blue)
-![](https://img.shields.io/badge/stars%20⭐-30-yellow)
+![](https://img.shields.io/badge/day%20📅-16-blue)
+![](https://img.shields.io/badge/stars%20⭐-32-yellow)
 ### PROGRESS
 
 | Day | Name | Solution | Stars Earned |
@@ -21,7 +21,7 @@
 | 13 | [Transparent Origami](https://adventofcode.com/2021/day/13) | [13](13) | ★★ |
 | 14 | [Extended Polymerization](https://adventofcode.com/2021/day/14) | [14](14) | ★★ |
 | 15 | [Chiton](https://adventofcode.com/2021/day/15) | [15](15) | ★★ |
-| 16 |  |  | ☆☆ |
+| 16 | [Packet Decoder](https://adventofcode.com/2021/day/16) | [16](16) | ★★ |
 | 17 |  |  | ☆☆ |
 | 18 |  |  | ☆☆ |
 | 19 |  |  | ☆☆ |
