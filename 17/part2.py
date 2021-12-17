@@ -27,11 +27,8 @@ def hit_count():    # shit is faster with PyPy if the loop is inside a function
             dy -= 1
         return False
 
-    count = 0
     for dx in range(max_x+1):
         for dy in range(min_y, 500):
-            if shoot(dx, dy):
-                count += 1
-    return count
+            yield shoot(dx, dy)
 
-print(hit_count())
+print(sum(hit_count()))
