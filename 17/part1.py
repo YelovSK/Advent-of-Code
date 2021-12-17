@@ -1,5 +1,3 @@
-from timeit import default_timer
-
 f = open("17\\input.txt").read().strip()[13:]
 x_coords, y_coords = f.split(", ")
 x1, x2 = x_coords[2:].split("..")
