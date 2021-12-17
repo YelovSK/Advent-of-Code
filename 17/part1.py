@@ -1,15 +1,8 @@
-f = open("17\\input.txt").read().strip()[13:]
-x_coords, y_coords = f.split(", ")
-x1, x2 = x_coords[2:].split("..")
-y1, y2 = y_coords[2:].split("..")
+from re import findall as fa
 
-def i_range(start, end):
-    if end < start:
-        return range(start, end-1, -1)
-    return range(start, end+1)
-
-xrange = i_range(int(x1), int(x2))
-yrange = i_range(int(y1), int(y2))
+x1, x2, y1, y2 = [int(s) for s in fa("[-\d]+", open("17\\input.txt").read().strip())]
+xrange = range(min(x1, x2), max(x1, x2)+1)
+yrange = range(min(y1, y2), max(y1, y2)+1)
 max_x = max(xrange)
 min_y = min(yrange)
 
