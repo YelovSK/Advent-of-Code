@@ -1,3 +1,5 @@
+from timeit import default_timer
+
 f = open("17\\input.txt").read().strip()[13:]
 x_coords, y_coords = f.split(", ")
 x1, x2 = x_coords[2:].split("..")
@@ -30,12 +32,8 @@ def get_max_height():   # shit is faster with PyPy if the loop is inside a funct
             dy -= 1
         return -1
 
-    max_height = 0
     for dx in range(max_x+1):
         for dy in range(min_y, 500):
-            height = shoot(dx, dy)
-            if height > max_height:
-                max_height = height
-    return max_height
+            yield shoot(dx, dy)
 
-print(get_max_height())
+print(max(get_max_height()))
