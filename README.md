@@ -1,7 +1,6 @@
 # [Advent of Code 2021](https://adventofcode.com/2021)
 
-![](https://img.shields.io/badge/day%20📅-17-blue)
-![](https://img.shields.io/badge/stars%20⭐-34-yellow)
+![](https://img.shields.io/badge/stars%20⭐-36-yellow)
 ### PROGRESS
 
 | Day | Name | Solution | Stars Earned |
@@ -25,7 +24,7 @@
 | 17 | [Trick Shot](https://adventofcode.com/2021/day/17) | [17](17) | ★★ |
 | 18 |  |  | ☆☆ |
 | 19 |  |  | ☆☆ |
-| 20 |  |  | ☆☆ |
+| 20 | [Trench Map](https://adventofcode.com/2021/day/20) | [20](20) | ★★ |
 | 21 |  |  | ☆☆ |
 | 22 |  |  | ☆☆ |
 | 23 |  |  | ☆☆ |
