@@ -17,7 +17,7 @@ def get_index(input, x, y, outer):
     return int(binary_res, 2)
 
 def get_new_output(input, ix):
-    outer = "." if ix % 2 == 0 else "#"
+    outer = "#" if ix % 2 and algo[0] == "#" else "."
     input.insert(0, [outer for _ in range(len(input[0]))])
     input.append([outer for _ in range(len(input[0]))])
     for r in input:
