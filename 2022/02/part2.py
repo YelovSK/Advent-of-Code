@@ -1,38 +1,26 @@
-from enum import Enum
+from enum import IntEnum
 
-WIN_SCORE = 6
-DRAW_SCORE = 3
-LOSE_SCORE = 0
 
-ROCK_SCORE = 1
-PAPER_SCORE = 2
-SCISSORS_SCORE = 3
-
-class RPC(Enum):
+class RPC(IntEnum):
     ROCK = 1
     PAPER = 2
     SCISSORS = 3
 
-class Result(Enum):
-    WIN = 1
-    DRAW = 2
-    LOSE = 3
+class Result(IntEnum):
+    WIN = 6
+    DRAW = 3
+    LOSE = 0
 
-def get_rpc(char: str) -> RPC:
-    if char == "A":
-        return RPC.ROCK
-    elif char == "B":
-        return RPC.PAPER
-    elif char == "C":
-        return RPC.SCISSORS
-
-def get_result(char: str) -> Result:
-    if char == "X":
-        return Result.LOSE
-    elif char == "Y":
-        return Result.DRAW
-    elif char == "Z":
-        return Result.WIN
+rpc_map = {
+    "A": RPC.ROCK,
+    "B": RPC.PAPER,
+    "C": RPC.SCISSORS,
+}
+result_map = {
+    "X": Result.LOSE,
+    "Y": Result.DRAW,
+    "Z": Result.WIN,
+}
 
 def get_player(opponent: RPC, result: Result) -> RPC:
     if result == Result.DRAW:
@@ -46,32 +34,14 @@ def get_player(opponent: RPC, result: Result) -> RPC:
         return RPC.ROCK if result == Result.WIN else RPC.PAPER
 
 with open("02/input.txt", "r") as f:
-    data = f.readlines()
-
-# Strip newlines
-data = [d.strip() for d in data]
-# Split into pairs
-pairs = [d.split(" ") for d in data]
+    data = [l.strip() for l in f.readlines()]
 
 score = 0
-for opponent, result in pairs:
-    result = get_result(result)
+for opponent, result in [row.split(" ") for row in data]:
+    result = result_map[result]
+    opponent = rpc_map[opponent]
 
-    if result == Result.WIN:
-        score += WIN_SCORE
-    elif result == Result.DRAW:
-        score += DRAW_SCORE
-    elif result == Result.LOSE:
-        score += LOSE_SCORE
-
-    opponent = get_rpc(opponent)
-    player = get_player(opponent, result)
-
-    if player == RPC.ROCK:
-        score += ROCK_SCORE
-    elif player == RPC.PAPER:
-        score += PAPER_SCORE
-    elif player == RPC.SCISSORS:
-        score += SCISSORS_SCORE
+    score += result
+    score += get_player(opponent, result)
 
 print("Part 2:", score)

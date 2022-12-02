@@ -1,56 +1,49 @@
-from enum import Enum
+from enum import IntEnum
 
-WIN_SCORE = 6
-DRAW_SCORE = 3
-LOSE_SCORE = 0
+class Result(IntEnum):
+    WIN = 6
+    DRAW = 3
+    LOSE = 0
 
-ROCK_SCORE = 1
-PAPER_SCORE = 2
-SCISSORS_SCORE = 3
-
-class RPC(Enum):
+class RPC(IntEnum):
     ROCK = 1
     PAPER = 2
     SCISSORS = 3
 
-def get_rpc(char: str) -> RPC:
-    if char == "X" or char == "A":
-        return RPC.ROCK
-    elif char == "Y" or char == "B":
-        return RPC.PAPER
-    elif char == "Z" or char == "C":
-        return RPC.SCISSORS
+rpc_map = {
+    "A": RPC.ROCK,
+    "X": RPC.ROCK,
+
+    "B": RPC.PAPER,
+    "Y": RPC.PAPER,
+
+    "C": RPC.SCISSORS,
+    "Z": RPC.SCISSORS,
+}
 
 def get_score(opponent: RPC, player: RPC) -> int:
     if opponent == player:
-        return DRAW_SCORE
+        return Result.DRAW
 
     if opponent == RPC.ROCK:
-        return WIN_SCORE if player == RPC.PAPER else LOSE_SCORE
+        return Result.WIN if player == RPC.PAPER else Result.LOSE
     elif opponent == RPC.PAPER:
-        return WIN_SCORE if player == RPC.SCISSORS else LOSE_SCORE
+        return Result.WIN if player == RPC.SCISSORS else Result.LOSE
     elif opponent == RPC.SCISSORS:
-        return WIN_SCORE if player == RPC.ROCK else LOSE_SCORE
+        return Result.WIN if player == RPC.ROCK else Result.LOSE
 
 with open("02/input.txt", "r") as f:
-    data = f.readlines()
+    data = [l.strip() for l in f.readlines()]
 
-# Strip newlines
-data = [d.strip() for d in data]
 # Split into pairs
 pairs = [d.split(" ") for d in data]
-# Strings into RPCs
-pairs = [(get_rpc(p[0]), get_rpc(p[1])) for p in pairs]
 
 score = 0
-for opponent, player in pairs:
-    if player == RPC.ROCK:
-        score += ROCK_SCORE
-    elif player == RPC.PAPER:
-        score += PAPER_SCORE
-    elif player == RPC.SCISSORS:
-        score += SCISSORS_SCORE
+for opponent, player in [row.split(" ") for row in data]:
+    opponent = rpc_map[opponent]
+    player = rpc_map[player]
 
+    score += player
     score += get_score(opponent, player)
 
 print("Part 1:", score)
