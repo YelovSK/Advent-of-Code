@@ -1,14 +1,17 @@
 from enum import IntEnum
 
+
 class Result(IntEnum):
     WIN = 6
     DRAW = 3
     LOSE = 0
 
+
 class RPC(IntEnum):
     ROCK = 1
     PAPER = 2
     SCISSORS = 3
+
 
 rpc_map = {
     "A": RPC.ROCK,
@@ -21,6 +24,7 @@ rpc_map = {
     "Z": RPC.SCISSORS,
 }
 
+
 def get_score(opponent: RPC, player: RPC) -> int:
     if opponent == player:
         return Result.DRAW
@@ -31,6 +35,7 @@ def get_score(opponent: RPC, player: RPC) -> int:
         return Result.WIN if player == RPC.SCISSORS else Result.LOSE
     elif opponent == RPC.SCISSORS:
         return Result.WIN if player == RPC.ROCK else Result.LOSE
+
 
 with open("02/input.txt", "r") as f:
     data = [l.strip() for l in f.readlines()]
