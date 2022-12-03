@@ -7,8 +7,4 @@ elves = [[int(n) for n in e if n] for e in elves]
 sums = [sum(x) for x in elves]
 sums.sort()
 
-# Part 1
-print(sums[-1])
-
-# Part 2
-print(sum(sums[-3:]))
+print("Part 2:", sum(sums[-3:]))

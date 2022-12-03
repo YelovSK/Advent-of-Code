@@ -6,10 +6,12 @@ class RPC(IntEnum):
     PAPER = 2
     SCISSORS = 3
 
+
 class Result(IntEnum):
     WIN = 6
     DRAW = 3
     LOSE = 0
+
 
 rpc_map = {
     "A": RPC.ROCK,
@@ -22,6 +24,7 @@ result_map = {
     "Z": Result.WIN,
 }
 
+
 def get_player(opponent: RPC, result: Result) -> RPC:
     if result == Result.DRAW:
         return opponent
@@ -32,6 +35,7 @@ def get_player(opponent: RPC, result: Result) -> RPC:
         return RPC.SCISSORS if result == Result.WIN else RPC.ROCK
     elif opponent == RPC.SCISSORS:
         return RPC.ROCK if result == Result.WIN else RPC.PAPER
+
 
 with open("02/input.txt", "r") as f:
     data = [l.strip() for l in f.readlines()]
