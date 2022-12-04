@@ -9,3 +9,4 @@
 | 01  |    [Calorie Counting](https://adventofcode.com/2022/day/1)     | [01](01) |      ★★      |
 | 02  |   [Rock Paper Scissors](https://adventofcode.com/2022/day/2)   | [02](02) |      ★★      |
 | 03  | [Rucksack Reorganization](https://adventofcode.com/2022/day/3) | [03](03) |      ★★      |
+| 04  |      [Camp Cleanup](https://adventofcode.com/2022/day/4)       | [04](04) |      ★★      |
