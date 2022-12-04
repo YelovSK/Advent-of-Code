@@ -7,8 +7,7 @@ class Pair:
     second: set[int]
 
     def is_full_overlap(self) -> bool:
-        intersection = set(self.first) & set(self.second)
-        return len(intersection) == len(self.first) or len(intersection) == len(self.second)
+        return self.first <= self.second or self.second <= self.first
 
     def is_overlap(self) -> bool:
         return any(set(self.first) & set(self.second))
