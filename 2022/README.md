@@ -1,6 +1,6 @@
 # [Advent of Code 2022](https://adventofcode.com/2022)
 
-![](https://img.shields.io/badge/stars%20⭐-6-yellow)
+![](https://img.shields.io/badge/stars%20⭐-12-yellow)
 
 ### PROGRESS
 
@@ -11,3 +11,4 @@
 | 03  | [Rucksack Reorganization](https://adventofcode.com/2022/day/3) | [03](03) |      ★★      |
 | 04  |      [Camp Cleanup](https://adventofcode.com/2022/day/4)       | [04](04) |      ★★      |
 | 05  |      [Supply Stacks](https://adventofcode.com/2022/day/5)      | [05](05) |      ★★      |
+| 06  |     [Tuning Trouble](https://adventofcode.com/2022/day/6)      | [06](06) |      ★★      |
