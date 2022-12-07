@@ -65,41 +65,24 @@ class Tree:
     def parse_input(self, lines: list[str]) -> None:
         current_node = self.root
 
-        while len(lines):
-            line = lines.pop(0)
-
-            # Change directory
-            if line.startswith("$ cd"):
-                path = line[5:]
-                # Root
-                if path == "/":
+        for line in lines:
+            match line.split(" "):
+                case "$", "cd", "/":
                     current_node = self.root
-                # Parent
-                elif path == "..":
+                case "$", "cd", "..":
                     current_node = current_node.parent
-                # Child
-                else:
-                    current_node.children.add(DirectoryNode(current_node, path))
-                    current_node = self.search(current_node, path)
-            # List directory contents
-            elif line == "$ ls":
-                # Read until next command
-                while len(lines) and not lines[0].startswith("$"):
-                    x, name = lines.pop(0).split(" ")
-                    # X describes directory
-                    if x == "dir":
-                        current_node.children.add(DirectoryNode(current_node, name))
-                    # X describes file size
-                    else:
-                        current_node.children.add(FileNode(current_node, name, int(x)))
-
-    @staticmethod
-    def search(root: Node, name: str) -> Optional[Node]:
-        for node in root.children:
-            if node.name == name:
-                return node
-
-        return None
+                case "$", "cd", _:
+                    name = line.split(" ")[2]
+                    current_node.children.add(DirectoryNode(current_node, name))
+                    current_node = [x for x in current_node.children if x.name == name][0]
+                case "$", "ls":
+                    continue
+                case "dir", _:
+                    name = line.split(" ")[1]
+                    current_node.children.add(DirectoryNode(current_node, name))
+                case _, _:
+                    size, name = line.split(" ")
+                    current_node.children.add(FileNode(current_node, name, int(size)))
 
     def get_directories(self, root: Node) -> list[DirectoryNode]:
         result = []
