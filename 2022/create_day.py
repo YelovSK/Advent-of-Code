@@ -22,9 +22,9 @@ if os.path.exists(day_padded):
 # Create folder and files
 os.mkdir(day_padded)
 with open(f"{day_padded}/part1.py", "w") as f:
-    f.write('with open("input.txt") as f:\n    data = f.read()')
+    f.write(f'with open("{day_padded}/input.txt") as f:\n    data = f.read()')
 with open(f"{day_padded}/part2.py", "w") as f:
-    f.write('with open("input.txt") as f:\n    data = f.read()')
+    f.write(f'with open("{day_padded}/input.txt") as f:\n    data = f.read()')
 
 # Get input
 url = f"https://adventofcode.com/2022/day/{day}/input"
