@@ -5,9 +5,9 @@ folders = [filename for filename in os.listdir() if os.path.isdir(os.path.join(f
 times = [timeit.default_timer()]
 for folder in folders:
     print(f"Day {folder}:")
-    runpy.run_path(f"{folder}\\part1.py")
+    runpy.run_path(f"{folder}/part1.py")
     times.append(timeit.default_timer())
-    runpy.run_path(f"{folder}\\part2.py")
+    runpy.run_path(f"{folder}/part2.py")
     times.append(timeit.default_timer())
     print("-" * 10)
 
