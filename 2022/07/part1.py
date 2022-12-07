@@ -71,17 +71,14 @@ class Tree:
                     current_node = self.root
                 case "$", "cd", "..":
                     current_node = current_node.parent
-                case "$", "cd", _:
-                    name = line.split(" ")[2]
+                case "$", "cd", name:
                     current_node.children.add(DirectoryNode(current_node, name))
                     current_node = [x for x in current_node.children if x.name == name][0]
                 case "$", "ls":
                     continue
-                case "dir", _:
-                    name = line.split(" ")[1]
+                case "dir", name:
                     current_node.children.add(DirectoryNode(current_node, name))
-                case _, _:
-                    size, name = line.split(" ")
+                case size, name:
                     current_node.children.add(FileNode(current_node, name, int(size)))
 
     def get_directories(self, root: Node) -> list[DirectoryNode]:
