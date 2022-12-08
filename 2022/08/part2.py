@@ -7,31 +7,27 @@ def get_score(row_ix: int, column_ix: int) -> int:
 
     # Check left
     for x in reversed(row[:column_ix]):
-        if x >= value:
-            left += 1
-            break
         left += 1
+        if x >= value:
+            break
 
     # Check right
     for x in row[column_ix + 1:]:
-        if x >= value:
-            right += 1
-            break
         right += 1
+        if x >= value:
+            break
 
     # Check top
     for x in reversed(column[:row_ix]):
-        if x >= value:
-            top += 1
-            break
         top += 1
+        if x >= value:
+            break
 
     # Check bottom
     for x in column[row_ix + 1:]:
-        if x >= value:
-            bottom += 1
-            break
         bottom += 1
+        if x >= value:
+            break
 
     return left * right * top * bottom
 
