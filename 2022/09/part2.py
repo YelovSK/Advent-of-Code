@@ -36,7 +36,7 @@ for line in data:
             elif abs(y_diff) == 2 and abs(x_diff) == 0:
                 move_by_y = 1 if y_diff > 0 else -1
             # Diagonal
-            elif abs(x_diff) == 2 and abs(y_diff) >= 1 or abs(y_diff) == 2 and abs(x_diff) >= 1:
+            elif abs(x_diff) == 2 or abs(y_diff) == 2:
                 move_by_x = 1 if x_diff > 0 else -1
                 move_by_y = 1 if y_diff > 0 else -1
 
