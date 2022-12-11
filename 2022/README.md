@@ -1,6 +1,6 @@
 # [Advent of Code 2022](https://adventofcode.com/2022)
 
-![](https://img.shields.io/badge/stars%20⭐-20-yellow)
+![](https://img.shields.io/badge/stars%20⭐-22-yellow)
 
 ### PROGRESS
 
@@ -16,3 +16,4 @@
 | 08 |   [Treetop Tree House](https://adventofcode.com/2022/day/8)    | [08](08) | ★★ |
 | 09 |       [Rope Bridge](https://adventofcode.com/2022/day/9)       | [09](09) | ★★ |
 | 10 |  [Cathode-Ray Tube](https://adventofcode.com/2022/day/10)      | [10](10) | ★★ |
+| 11 | [Monkey in the Middle](https://adventofcode.com/2022/day/11)   | [11](11) | ★★ |
