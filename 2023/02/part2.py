@@ -1,10 +1,6 @@
 with open("2023/02/input.txt") as f:
     data = f.read().strip()
 
-MAX_RED = 12
-MAX_GREEN = 13
-MAX_BLUE = 14
-
 result = 0
 
 for line in data.splitlines():

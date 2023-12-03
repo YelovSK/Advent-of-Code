@@ -8,3 +8,4 @@
 | :-: | :---------------------------------------------------: | :------: | :----------: |
 | 01  |  [Trebuchet?!](https://adventofcode.com/2023/day/1)   | [01](01) |      ★★      |
 | 02  | [Cube Conundrum](https://adventofcode.com/2023/day/2) | [02](02) |      ★★      |
+| 03  |  [Gear Ratios](https://adventofcode.com/2023/day/3)   | [03](03) |      ★★      |
