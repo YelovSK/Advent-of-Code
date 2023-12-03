@@ -5,9 +5,19 @@ import datetime
 from dotenv import load_dotenv
 
 # Usage: python create_day.py 2023 1
-year = sys.argv[1]
-day = sys.argv[2]
-day_padded = day.zfill(2)
+if len(sys.argv) == 3:
+    year = sys.argv[1]
+    day = sys.argv[2]
+    day_padded = day.zfill(2)
+elif len(sys.argv) == 1:
+    today = datetime.date.today()
+    year = today.year
+    day = today.day
+    day_padded = str(day).zfill(2)
+else:
+    print("Usage: python create_day.py 2023 1")
+    print("Usage: python create_day.py (creates for current day)")
+    exit()
 
 # Check if day is not in the future
 today = datetime.date.today()
