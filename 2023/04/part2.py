@@ -1,32 +1,20 @@
-from attr import dataclass
-import re
+from collections import defaultdict
 
 with open("2023/04/input.txt") as f:
-    lines = f.read().strip().splitlines()
+    lines = f.read().splitlines()
 
-@dataclass
-class Card:
-    count: int
-    numbers: list[int]
-
-cards: list[Card] = []
+cards = defaultdict(int)
 
 # Parse
 for i, line in enumerate(lines):
-    card, nums = line.split(": ")
-    winning_nums, my_nums = nums.split(" | ")
+    card, nums = line.split(":")
+    winning_nums, my_nums = nums.split("|")
 
-    winning_nums = {int(num) for num in re.findall("\d+", winning_nums)}
-    my_nums = {int(num) for num in re.findall("\d+", my_nums)}
+    winning_nums = set(winning_nums.split())
+    my_nums = set(my_nums.split())
 
-    intersection = winning_nums & my_nums
-    numbers = [i + j + 1 for j in range(len(intersection))]
+    cards[i] += 1
+    for j in range(len(winning_nums & my_nums)):
+        cards[i + j + 1] += cards[i]
 
-    cards.append(Card(1, numbers))
-
-# Add
-for number, card in enumerate(cards):
-    for number in card.numbers:
-        cards[number].count += card.count
-
-print("Part 2", sum([card.count for card in cards]))
+print("Part 2", sum(cards.values()))
