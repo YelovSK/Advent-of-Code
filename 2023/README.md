@@ -1,6 +1,6 @@
 # [Advent of Code 2022](https://adventofcode.com/2023)
 
-![](https://img.shields.io/badge/stars%20⭐-12-yellow)
+![](https://img.shields.io/badge/stars%20⭐-14-yellow)
 
 ### PROGRESS
 
@@ -13,3 +13,4 @@
 | 05  | [If You Give A Seed A Fertilizer](https://adventofcode.com/2023/day/5) | [05](05) |              |
 | 06  |           [Wait For It](https://adventofcode.com/2023/day/6)           | [06](06) |      ★★      |
 | 07  |           [Camel Cards](https://adventofcode.com/2023/day/7)           | [07](07) |      ★★      |
+| 08  |        [Haunted Wasteland](https://adventofcode.com/2023/day/8)        | [08](08) |      ★★      |
