@@ -1,6 +1,6 @@
 # [Advent of Code 2022](https://adventofcode.com/2023)
 
-![](https://img.shields.io/badge/stars%20⭐-16-yellow)
+![](https://img.shields.io/badge/stars%20⭐-18-yellow)
 
 ### PROGRESS
 
@@ -15,3 +15,4 @@
 | 07  |           [Camel Cards](https://adventofcode.com/2023/day/7)           | [07](07) |      ★★      |
 | 08  |        [Haunted Wasteland](https://adventofcode.com/2023/day/8)        | [08](08) |      ★★      |
 | 09  |       [Mirage Maintenance](https://adventofcode.com/2023/day/9)        | [09](09) |      ★★      |
+| 10  |           [Pipe Maze](https://adventofcode.com/2023/day/10)            | [10](10) |      ★★      |
