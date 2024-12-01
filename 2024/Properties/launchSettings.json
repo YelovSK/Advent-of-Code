@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Solve today": {
+      "commandName": "Project",
+      "commandLineArgs": "solve -d"
+    }
+  }
+}
