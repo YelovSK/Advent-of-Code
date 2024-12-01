@@ -18,13 +18,13 @@ public class Solution
 
        if (Part1Result != null)
        {
-           builder.AppendLine($"PART 1 in {Part2Elapsed.Milliseconds}ms:");
+           builder.AppendLine($"PART 1 in {Part1Elapsed.Milliseconds}ms:");
            builder.AppendLine(Part1Result);
        }
        
        if (Part2Result != null)
        {
-           builder.AppendLine($"PART 2 in {Part1Elapsed.Milliseconds}ms:");
+           builder.AppendLine($"PART 2 in {Part2Elapsed.Milliseconds}ms:");
            builder.AppendLine(Part2Result);
        }
        
