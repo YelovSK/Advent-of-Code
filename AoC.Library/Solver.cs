@@ -4,34 +4,44 @@ namespace AoC.Library;
 
 public static class Solver
 {
-   public static ResultWrapper<Solution> Solve(BaseDay day, SolveOptions options)
-   {
-       var solution = new Solution();
+    public static Solution Solve(BaseDay day, SolveOptions options)
+    {
+        var solution = new Solution();
 
-       try
-       {
-           if (options.SolvePart1)
-           {
-               var start = Stopwatch.GetTimestamp();
-               solution.Part1Result = day.Part1();
-               solution.Part1Elapsed = Stopwatch.GetElapsedTime(start);
-           }
+        if (options.SolvePart1)
+        {
+            var (result, elapsed) = TimeFunction(day.Part1);
+            solution.Part1Result = result;
+            solution.Part1Elapsed = elapsed;
+        }
 
-           if (options.SolvePart2)
-           {
-               var start = Stopwatch.GetTimestamp();
-               solution.Part2Result = day.Part2();
-               solution.Part2Elapsed = Stopwatch.GetElapsedTime(start);          
-           }
-       }
-       catch (Exception e)
-       {
-           return ResultWrapper<Solution>.Error(e);
-       }
+        if (options.SolvePart2)
+        {
+            var (result, elapsed) = TimeFunction(day.Part2);
+            solution.Part2Result = result;
+            solution.Part2Elapsed = elapsed;
+        }
 
-       return ResultWrapper<Solution>.Success(solution);
-   } 
-   
-   public static ResultWrapper<Solution> SolvePart1(BaseDay day) => Solve(day, new SolveOptions(true, false));
-   public static ResultWrapper<Solution> SolvePart2(BaseDay day) => Solve(day, new SolveOptions(false, true));
+        return solution;
+    }
+
+    public static Solution SolvePart1(BaseDay day) => Solve(day, new SolveOptions(true, false));
+    public static Solution SolvePart2(BaseDay day) => Solve(day, new SolveOptions(false, true));
+
+    private static (string Result, TimeSpan Elapsed) TimeFunction(Func<string> func)
+    {
+        var start = Stopwatch.GetTimestamp();
+
+        string result;
+        try
+        {
+            result = func();
+        }
+        catch (Exception ex)
+        {
+            result = $"Exception: {ex.Message}";
+        }
+
+        return (result, Stopwatch.GetElapsedTime(start));
+    }
 }

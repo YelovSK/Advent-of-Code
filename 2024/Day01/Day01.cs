@@ -1,4 +1,5 @@
 using AoC.Library;
+using AoC.Library.Helpers;
 
 namespace AoC.Day01;
 
@@ -20,20 +21,18 @@ public class Day01 : BaseDay
     {
         var lr = GetLeftRight(input);
 
-        var left = lr.Select(lr => lr.Left).ToList();
-        var right = lr.Select(lr => lr.Right).ToList();
+        var left = lr.Select(lr => lr.Left).ToArray();
+        var right = lr.Select(lr => lr.Right).ToCounter();
 
-        return left.Sum(l => right.Count(r => r == l) * l)
+        return left.Sum(l => right.GetValueOrDefault(l, 0) * l)
                    .ToString();
     }
 
     protected override string RelativeInputPath => "Day01/input.txt";
 
-    private List<LeftRight> GetLeftRight(string input) => input
-            .Split(Environment.NewLine)
-            .Select(line => line.Trim().Split(" "))
-            .Select(words => new LeftRight(int.Parse(words.First()), int.Parse(words.Last())))
-            .ToList();
-
-    private record LeftRight(int Left, int Right); 
+    private (int Left, int Right)[] GetLeftRight(string input) => input
+            .SplitLines()
+            .Select(line => line.SplitWords())
+            .Select(words => (words.First().ToInt(), words.Last().ToInt()))
+            .ToArray();
 }
