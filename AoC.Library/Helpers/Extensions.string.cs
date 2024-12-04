@@ -4,8 +4,8 @@
     {
         public static IEnumerable<string> SplitLines(this string input)
         {
-            return input.Split(Environment.NewLine)
-                        .Select(line => line.Trim());
+            return input.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries)
+                        .Select(line => line.Trim());;
         }
 
         public static IEnumerable<string> SplitWords(this string input)
