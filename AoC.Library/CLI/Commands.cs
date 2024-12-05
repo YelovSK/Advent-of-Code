@@ -29,7 +29,7 @@ namespace AoC.Library.CLI
 
         public static void CreateDayFolder(CreateOptions options)
         {
-            options.Day ??= GetLatestDay();
+            options.Day ??= DateTime.UtcNow.Day;
             var day = options.Day;
 
             var folderName = Path.Combine(PathUtils.GetBaseDirectory(), $"Day{day:D2}");

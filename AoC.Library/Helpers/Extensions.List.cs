@@ -15,5 +15,7 @@
         /// Pointless alias. Name just makes it more explicit.
         /// </summary>
         public static List<T> Copy<T>(this List<T> list) => new(list);
+
+        public static T Middle<T>(this List<T> list) => list[(list.Count - 1) / 2];
     }
 }
