@@ -8,10 +8,9 @@ public class Day06 : BaseDay
     protected override string Part1(string input)
     {
         var map = GetMap(input);
-        while (map.Guard.X > 0 && map.Guard.X < map.Size.Item2 - 1 && map.Guard.Y > 0 && map.Guard.Y < map.Size.Item1 - 1)
+        while (map.Guard.X > 0 && map.Guard.X < map.Size.X - 1 && map.Guard.Y > 0 && map.Guard.Y < map.Size.Y - 1)
         {
-            var next = map.Guard.GetNextPosition();
-            if (map.Obstacles.Contains(next))
+            if (map.Obstacles.Contains(map.Guard.GetNextPosition()))
             {
                 map.Guard.TurnRight();
             }
@@ -19,7 +18,10 @@ public class Day06 : BaseDay
             map.Guard.Move();
         }
 
-        return map.Guard.Positions.Count.ToString();
+        return map.Guard.Positions
+            .DistinctBy(state => state.Position)
+            .Count()
+            .ToString();
     }
 
     // Slow
@@ -32,14 +34,13 @@ public class Day06 : BaseDay
         {
             map.Obstacles.Add(dot);
 
-            while (map.Guard.X > 0 && map.Guard.X < map.Size.Item2 - 1 && map.Guard.Y > 0 && map.Guard.Y < map.Size.Item1 - 1)
+            while (map.Guard.X > 0 && map.Guard.X < map.Size.X - 1 && map.Guard.Y > 0 && map.Guard.Y < map.Size.Y - 1)
             {
                 if (map.Obstacles.Contains(map.Guard.GetNextPosition()))
                 {
                     map.Guard.TurnRight();
                 }
-                
-                if (!map.Guard.Move())
+                else if (!map.Guard.Move())
                 {
                     loops++;
                     break;

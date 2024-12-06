@@ -1,10 +1,12 @@
-﻿namespace AoC.Day06;
+﻿using AoC.Library.Helpers;
+
+namespace AoC.Day06;
 
 public class Guard
 {
     public int X { get; private set; }
     public int Y { get; private set; }
-    public (int, int) Direction { get; private set; }
+    public (int X, int Y) Direction { get; private set; }
     public readonly HashSet<GuardState> Positions = [];
     
     // Original
@@ -19,10 +21,10 @@ public class Guard
 
         Direction = c switch
         {
-            '^' => (0, -1),
-            'v' => (0, 1),
-            '<' => (-1, 0),
-            '>' => (1, 0),
+            '^' => Directions.Up,
+            'v' => Directions.Down,
+            '<' => Directions.Left,
+            '>' => Directions.Right,
             _ => throw new ArgumentOutOfRangeException()
         };
         Positions.Add(new GuardState(new Point(x, y), Direction));
@@ -42,23 +44,16 @@ public class Guard
 
     public bool Move()
     {
-        X += Direction.Item1;
-        Y += Direction.Item2;
+        X += Direction.X;
+        Y += Direction.Y;
         return Positions.Add(new GuardState(new Point(X, Y), Direction));
     }
     
-    public Point GetNextPosition() => new(X + Direction.Item1, Y + Direction.Item2);
+    public Point GetNextPosition() => new(X + Direction.X, Y + Direction.Y);
 
     public void TurnRight()
     {
-        Direction = Direction switch
-        {
-            (0, -1) => (1, 0),
-            (0, 1) => (-1, 0),
-            (-1, 0) => (0, -1),
-            (1, 0) => (0, 1),
-            _ => throw new ArgumentOutOfRangeException()
-        };
+        Direction = Directions.RotateRight(Direction);
     }
 
     public override string ToString()

@@ -2,8 +2,8 @@
 
 public readonly struct GuardState(Point point, (int, int) direction) : IEquatable<GuardState>
 {
-    private (int, int) Direction { get; } = direction;
-    private Point Position { get; } = point;
+    public (int, int) Direction { get; } = direction;
+    public Point Position { get; } = point;
 
     public bool Equals(GuardState other)
     {
