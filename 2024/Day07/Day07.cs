@@ -45,9 +45,14 @@ public class Day07 : BaseDay
         var equations = GetEquations(input);
         var sum = 0ul;
         
-        foreach (var equation in equations)
+        var permutationCache = equations
+            .Select(eq => eq.Operands.Count - 1)
+            .Distinct()
+            .ToDictionary(key => key, key => operators.PermutationsWithRepetition(key).ToList());
+        
+        Parallel.ForEach(equations, (equation) =>
         {
-            var permutations = operators.PermutationsWithRepetition(equation.Operands.Count - 1);
+            var permutations = permutationCache[equation.Operands.Count - 1];
             
             foreach (var permutation in permutations)
             {
@@ -66,11 +71,11 @@ public class Day07 : BaseDay
                 
                 if (result == equation.Result)
                 {
-                    sum += result;
+                    Interlocked.Add(ref sum, result);
                     break;
                 }
             }
-        }
+        });
 
         return sum.ToString();
     }
