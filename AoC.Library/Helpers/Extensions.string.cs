@@ -1,4 +1,6 @@
-﻿namespace AoC.Library.Helpers
+﻿using System.Data;
+
+namespace AoC.Library.Helpers
 {
     public static partial class Extensions
     {
@@ -11,6 +13,26 @@
         public static IEnumerable<string> SplitWords(this string input)
         {
             return input.Split([' '], StringSplitOptions.RemoveEmptyEntries);
+        }
+
+        public static IEnumerable<(Position position, char c)> GetGridPositions(this string input)
+        {
+            var lines = input.SplitLines().ToList();
+
+            for (var y = 0; y < lines.Count; y++)
+            {
+                for (var x = 0; x < lines[y].Length; x++)
+                {
+                    var c = lines[y][x];
+                    yield return (new Position(x, y), c);
+                }
+            }
+        }
+
+        public static Size GetGridSize(this string input)
+        {
+            var lines = input.SplitLines().ToList();
+            return new Size(lines.First().Length, lines.Count);
         }
 
         #region I hate typing {type}.Parse
