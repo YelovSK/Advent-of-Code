@@ -1,4 +1,6 @@
-﻿namespace AoC.Library.Helpers
+﻿using System.Numerics;
+
+namespace AoC.Library.Helpers
 {
     public static partial class Extensions
     {
@@ -7,7 +9,18 @@
         /// </summary>
         public static Dictionary<TKey, int> ToCounter<TKey>(this IEnumerable<TKey> input) where TKey : notnull
         {
-            return input.GroupBy(x => x).ToDictionary(g => g.Key, g => g.Count());
+            return input.ToCounter<TKey, int>();
+        }
+
+        /// <summary>
+        /// Value is the number of occurences of the key. Like Python's Counter.
+        /// </summary>
+        /// <typeparam name="TVal">Numeric type for the count. Basically if int it not enough you can use e.g. long</typeparam>
+        public static Dictionary<TKey, TVal> ToCounter<TKey, TVal>(this IEnumerable<TKey> input)
+            where TKey : notnull
+            where TVal : INumber<TVal>
+        {
+            return input.GroupBy(x => x).ToDictionary(g => g.Key, g => (TVal)Convert.ChangeType(g.Count(), typeof(TVal)));
         }
 
         public static IEnumerable<List<T>> PermutationsWithRepetition<T>(this IEnumerable<T> items, int sampleSize)
@@ -31,6 +44,11 @@
                     }
                 }
             }
+        }
+
+        public static IEnumerable<IGrouping<TSource, TSource>> Group<TSource>(this IEnumerable<TSource> enumerable)
+        {
+            return enumerable.GroupBy(_ => _);
         }
     }
 }

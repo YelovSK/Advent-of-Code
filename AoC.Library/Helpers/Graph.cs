@@ -57,66 +57,51 @@
         }
 
 
-        public void AddEdge(Vertex<T> source, Vertex<T> destination)
+        public void AddEdge(Vertex<T> start, Vertex<T> end)
         {
-            ArgumentNullException.ThrowIfNull(source);
-            ArgumentNullException.ThrowIfNull(destination);
+            ArgumentNullException.ThrowIfNull(start);
+            ArgumentNullException.ThrowIfNull(end);
 
-            _adjacencyList.TryAdd(source, []);
-            _adjacencyList[source].Add(destination);
+            _adjacencyList.TryAdd(start, []);
+            _adjacencyList[start].Add(end);
         }
 
-        public IEnumerable<List<Vertex<T>>> GetPaths(Vertex<T> source, Vertex<T> destination)
+        public IEnumerable<List<Vertex<T>>> GetPaths(Vertex<T> start, Vertex<T> end)
         {
-            ArgumentNullException.ThrowIfNull(source);
-            ArgumentNullException.ThrowIfNull(destination);
+            var stack = new Stack<(Vertex<T> Current, List<Vertex<T>> Path)>();
+            stack.Push((start, new List<Vertex<T>> { start }));
 
-            return GetPathsRecursive(source, destination, []);
-        }
-
-        private IEnumerable<List<Vertex<T>>> GetPathsRecursive(
-            Vertex<T> current,
-            Vertex<T> destination,
-            HashSet<Vertex<T>> visited,
-            List<Vertex<T>>? currentPath = null)
-        {
-            currentPath ??= [current];
-
-            if (current.Equals(destination))
+            while (stack.Count > 0)
             {
-                yield return new List<Vertex<T>>(currentPath);
-                yield break;
-            }
+                var (current, path) = stack.Pop();
 
-            var pathVisited = new HashSet<Vertex<T>>(visited) { current };
+                if (current.Equals(end))
+                {
+                    yield return path;
+                    continue;
+                }
 
-            if (!_adjacencyList.TryGetValue(current, out var neighbors))
-            {
-                yield break;
-            }
-
-            foreach (var neighbor in neighbors)
-            {
-                if (pathVisited.Contains(neighbor))
+                if (!_adjacencyList.TryGetValue(current, out var neighbours))
                 {
                     continue;
                 }
 
-                var newPath = new List<Vertex<T>>(currentPath) { neighbor };
-
-                foreach (var path in GetPathsRecursive(neighbor, destination, pathVisited, newPath))
+                foreach (var neighbour in neighbours.Where(n => !path.Contains(n)))
                 {
-                    yield return path;
+                    if (!path.Contains(neighbour)) // Avoid cycles
+                    {
+                        var newPath = new List<Vertex<T>>(path) { neighbour };
+                        stack.Push((neighbour, newPath));
+                    }
                 }
             }
         }
-
-        public bool HasPath(Vertex<T> source, Vertex<T> destination)
+        public bool HasPath(Vertex<T> start, Vertex<T> end)
         {
-            ArgumentNullException.ThrowIfNull(source);
-            ArgumentNullException.ThrowIfNull(destination);
+            ArgumentNullException.ThrowIfNull(start);
+            ArgumentNullException.ThrowIfNull(end);
 
-            return GetPaths(source, destination).Any();
+            return GetPaths(start, end).Any();
         }
     }
 }
